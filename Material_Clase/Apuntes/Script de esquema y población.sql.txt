@@ -1,0 +1,523 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.11.1deb2+deb7u1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 26, 2017 at 05:35 PM
+-- Server version: 5.5.38
+-- PHP Version: 5.4.4-14+deb7u12
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `pruebaBomberos`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accidente`
+--
+
+CREATE TABLE IF NOT EXISTS `accidente` (
+  `idaccidente` int(11) NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `cantidadheridos` int(11) DEFAULT NULL,
+  `localidad` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idaccidente`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `accidente`
+--
+
+INSERT INTO `accidente` (`idaccidente`, `fecha`, `cantidadheridos`, `localidad`) VALUES
+(1, '1994-10-21', 2, 'Neuquen'),
+(2, '2006-07-10', 0, 'Allen'),
+(3, '2008-03-18', 4, 'Plottier'),
+(4, '2009-01-28', 3, 'General Roca'),
+(5, '2008-09-06', 0, 'Cipolletti'),
+(6, '2010-12-25', 5, 'Neuquen'),
+(7, '2010-12-25', 8, 'Allen'),
+(8, '2011-02-25', 1, 'Plottier'),
+(9, '2004-04-12', 7, 'General Roca'),
+(10, '2005-06-11', 6, 'Cipolletti'),
+(11, '2005-06-14', 10, 'Neuquen'),
+(12, '2008-08-16', 2, 'Allen'),
+(13, '2012-04-12', 0, 'Plottier'),
+(14, '2012-06-22', 4, 'General Roca'),
+(15, '2004-06-25', 3, 'Cipolletti'),
+(16, '2013-07-25', 0, 'Neuquen'),
+(17, '2013-08-13', 5, 'Allen'),
+(18, '2013-05-03', 8, 'Cinco Saltos'),
+(19, '2005-05-03', 1, 'General Roca'),
+(20, '2004-03-03', 3, 'Cipolletti'),
+(21, '1994-11-05', 1, 'Neuquen'),
+(22, '2008-07-12', 7, 'Allen'),
+(23, '2008-03-19', 2, 'Plottier'),
+(24, '2009-02-03', 1, 'General Roca'),
+(25, '2008-09-08', 8, 'Cipolletti'),
+(26, '2010-12-25', 3, 'Neuquen'),
+(27, '2010-12-30', 6, 'Allen'),
+(28, '2011-02-27', 1, 'Plottier'),
+(29, '2004-04-12', 8, 'General Roca'),
+(30, '2005-06-14', 12, 'Cipolletti'),
+(31, '2005-06-18', 10, 'Neuquen'),
+(32, '2008-08-18', 2, 'Allen'),
+(33, '2012-04-18', 10, 'Plottier'),
+(34, '2012-06-22', 0, 'General Roca'),
+(35, '2004-06-25', 8, 'Cipolletti'),
+(36, '2013-07-25', 1, 'Neuquen'),
+(37, '2013-08-13', 7, 'Allen'),
+(38, '2013-05-03', 0, 'Plottier'),
+(39, '2005-05-13', 1, 'Cinco Saltos'),
+(40, '2004-03-03', 5, 'Cipolletti'),
+(41, '2014-04-15', 2, 'Allen'),
+(42, '2012-01-01', 7, 'Neuquen'),
+(43, '2009-05-17', 5, 'Cipolletti');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `asiste`
+--
+
+CREATE TABLE IF NOT EXISTS `asiste` (
+  `tipodoc` varchar(3) NOT NULL DEFAULT '',
+  `nrodoc` varchar(9) NOT NULL DEFAULT '',
+  `idaccidente` int(11) NOT NULL DEFAULT '0',
+  `rol` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`tipodoc`,`nrodoc`,`idaccidente`),
+  KEY `idaccidente` (`idaccidente`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `asiste`
+--
+
+INSERT INTO `asiste` (`tipodoc`, `nrodoc`, `idaccidente`, `rol`) VALUES
+('ce', '05256238', 3, 'jefe'),
+('ce', '05256238', 13, 'rescatista'),
+('ce', '05256238', 18, 'rescatista'),
+('ce', '05256238', 25, 'salvamentista'),
+('ce', '05256238', 34, 'jefe'),
+('ce', '05256238', 40, 'rescatista'),
+('ce', '05256238', 42, 'salvamentista'),
+('ce', '09333765', 7, 'jefe'),
+('ce', '09333765', 21, 'jefe'),
+('ce', '09333765', 28, 'salvamentista'),
+('ce', '09333765', 37, 'salvamentista'),
+('ce', '12223098', 4, 'salvamentista'),
+('ce', '12223098', 20, 'jefe'),
+('ce', '12223098', 27, 'jefe'),
+('ce', '12223098', 36, 'jefe'),
+('ce', '12223098', 43, 'Rescatista'),
+('ce', '30129303', 2, 'rescatista'),
+('ce', '30129303', 11, 'salvamentista'),
+('ce', '30129303', 16, 'salvamentista'),
+('ce', '30129303', 25, 'rescatista'),
+('ce', '30129303', 33, 'jefe'),
+('ce', '30129303', 40, 'salvamentista'),
+('ce', '30129303', 41, 'Rescatista'),
+('dni', '05334534', 7, 'salvamentista'),
+('dni', '05334534', 22, 'rescatista'),
+('dni', '05334534', 29, 'rescatista'),
+('dni', '05334534', 38, 'salvamentista'),
+('dni', '12345098', 1, 'rescatista'),
+('dni', '12345098', 10, 'rescatista'),
+('dni', '12345098', 14, 'salvamentista'),
+('dni', '12345098', 23, 'salvamentista'),
+('dni', '12345098', 32, 'jefe'),
+('dni', '12345098', 39, 'rescatista'),
+('dni', '13409257', 2, 'salvamentista'),
+('dni', '13409257', 12, ' '),
+('dni', '13409257', 16, 'salvamentista'),
+('dni', '13409257', 25, 'salvamentista'),
+('dni', '13409257', 33, 'rescatista'),
+('dni', '13409257', 40, 'rescatista'),
+('dni', '13409257', 41, 'jefe'),
+('dni', '15334567', 7, 'rescatista'),
+('dni', '15334567', 22, 'jefe'),
+('dni', '15334567', 29, 'jefe'),
+('dni', '15334567', 38, 'jefe'),
+('dni', '15334567', 42, 'Rescatista'),
+('dni', '17548735', 33, 'rescatista'),
+('dni', '18897234', 1, 'salvamentista'),
+('dni', '18897234', 11, 'jefe'),
+('dni', '18897234', 15, 'jefe'),
+('dni', '18897234', 24, 'jefe'),
+('dni', '18897234', 32, 'rescatista'),
+('dni', '18897234', 39, 'salvamentista'),
+('dni', '18897234', 41, 'salvamentista'),
+('dni', '21123233', 8, 'jefe'),
+('dni', '21123233', 22, 'rescatista'),
+('dni', '21123233', 29, 'salvamentista'),
+('dni', '21123233', 38, 'salvamentista'),
+('dni', '21123233', 42, 'Rescatista'),
+('dni', '22248765', 10, 'jefe'),
+('dni', '22248765', 12, 'jefe'),
+('dni', '22248765', 43, 'salvamentista'),
+('dni', '23456123', 8, 'rescatista'),
+('dni', '23456123', 22, 'salvamentista'),
+('dni', '23456123', 30, 'jefe'),
+('dni', '23456123', 33, 'salvamentista'),
+('dni', '23456123', 39, 'jefe'),
+('dni', '23667780', 2, 'salvamentista'),
+('dni', '23667780', 13, 'jefe'),
+('dni', '23667780', 18, 'jefe'),
+('dni', '23667780', 25, 'rescatista'),
+('dni', '23667780', 33, 'rescatista'),
+('dni', '23667780', 40, 'salvamentista'),
+('dni', '25344207', 42, 'salvamentista'),
+('dni', '25612333', 7, 'rescatista'),
+('dni', '25612333', 21, 'salvamentista'),
+('dni', '25612333', 28, 'salvamentista'),
+('dni', '25612333', 37, 'salvamentista'),
+('dni', '25780006', 9, 'jefe'),
+('dni', '25780006', 22, 'salvamentista'),
+('dni', '25780006', 30, 'salvamentista'),
+('dni', '25780006', 39, 'rescatista'),
+('dni', '28567123', 1, 'jefe'),
+('dni', '28567123', 2, 'rescatista'),
+('dni', '28567123', 14, 'rescatista'),
+('dni', '28567123', 16, 'rescatista'),
+('dni', '28567123', 23, 'jefe'),
+('dni', '28567123', 25, 'jefe'),
+('dni', '28567123', 31, 'jefe'),
+('dni', '28567123', 32, 'salvamentista'),
+('dni', '28567123', 39, 'rescatista'),
+('dni', '28567123', 40, 'jefe'),
+('dni', '28567123', 42, 'jefe'),
+('dni', '28777098', 6, 'jefe'),
+('dni', '28777098', 20, 'rescatista'),
+('dni', '28777098', 27, 'rescatista'),
+('dni', '28777098', 33, 'salvamentista'),
+('dni', '28777098', 37, 'jefe'),
+('dni', '28975666', 33, 'salvamentista'),
+('dni', '29467888', 3, 'rescatista'),
+('dni', '29467888', 4, 'jefe'),
+('dni', '29467888', 13, ' '),
+('dni', '29467888', 14, 'jefe'),
+('dni', '29467888', 18, 'salvamentista'),
+('dni', '29467888', 19, 'jefe'),
+('dni', '29467888', 25, 'salvamentista'),
+('dni', '29467888', 26, 'jefe'),
+('dni', '29467888', 34, 'salvamentista'),
+('dni', '29467888', 35, 'jefe'),
+('dni', '29467888', 39, 'salvamentista'),
+('dni', '29467888', 40, 'salvamentista'),
+('dni', '29547291', 37, 'salvamentista'),
+('dni', '36548747', 37, 'salvamentista'),
+('dni', '37531648', 37, 'salvamentista'),
+('li', '02345000', 43, 'jefe'),
+('li', '15876209', 2, 'jefe'),
+('li', '15876209', 11, 'rescatista'),
+('li', '15876209', 16, 'jefe'),
+('li', '15876209', 24, 'rescatista'),
+('li', '15876209', 32, 'salvamentista'),
+('li', '15876209', 33, 'jefe'),
+('li', '15876209', 39, 'salvamentista'),
+('li', '23456712', 4, 'rescatista'),
+('li', '23456712', 19, 'salvamentista'),
+('li', '23456712', 26, 'salvamentista'),
+('li', '23456712', 35, 'salvamentista'),
+('li', '23456712', 40, 'salvamentista'),
+('li', '38876543', 6, 'rescatista'),
+('li', '38876543', 20, 'salvamentista'),
+('li', '38876543', 28, 'jefe'),
+('li', '38876543', 37, 'salvamentista'),
+('li', '38876543', 41, 'Rescatista');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bombero`
+--
+
+CREATE TABLE IF NOT EXISTS `bombero` (
+  `tipodoc` varchar(3) NOT NULL DEFAULT '',
+  `nrodoc` varchar(9) NOT NULL DEFAULT '',
+  `nombre` varchar(30) DEFAULT NULL,
+  `apellido` varchar(30) DEFAULT NULL,
+  `anios_servicio` int(11) DEFAULT NULL,
+  `localidad` varchar(20) DEFAULT NULL,
+  `genero` varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`tipodoc`,`nrodoc`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bombero`
+--
+
+INSERT INTO `bombero` (`tipodoc`, `nrodoc`, `nombre`, `apellido`, `anios_servicio`, `localidad`, `genero`) VALUES
+('ce', '05256238', 'Cristian', 'Brown', 6, 'Neuquen', 'masculino'),
+('ce', '09322755', 'Amalia', 'Lopez', 6, 'Neuquen', 'femenino'),
+('ce', '09333765', 'Fabio', 'Garcia', 1, 'General Roca', 'masculino'),
+('ce', '12223098', 'Miguel', 'Tisnado', 5, 'Cipolletti', 'masculino'),
+('ce', '30129303', 'Justin', 'Gathlin', 4, 'General Roca', 'masculino'),
+('dni', '05334534', 'Laura', 'Maidana', 2, 'General Roca', 'femenino'),
+('dni', '12345098', 'Juana', 'Avila', 5, 'General Roca', 'femenino'),
+('dni', '13409257', 'Usain', 'Bolt', 3, 'Allen', 'masculino'),
+('dni', '15334567', 'Lorena', 'Maida', 3, 'Neuquen', 'femenino'),
+('dni', '17548735', 'Diego', 'Zapata', 2, 'Plottier', 'masculino'),
+('dni', '18364518', 'Ramiro', 'Blake', 4, 'Plottier', 'masculino'),
+('dni', '18897234', 'Tomas', 'Lincoln', 2, 'Allen', 'masculino'),
+('dni', '21123233', 'Ramon', 'Fernandez', 6, 'Neuquen', 'masculino'),
+('dni', '22248765', 'Erik', 'Kynard', 5, 'Cipolletti', 'masculino'),
+('dni', '23456123', 'Renata', 'Lopez', 1, 'Plottier', 'femenino'),
+('dni', '23667780', 'Yoana', 'Blake', 2, 'Plottier', 'femenino'),
+('dni', '25344207', 'Ana', 'Guerra', 1, 'Neuquen', 'femenino'),
+('dni', '25612333', 'Raul', 'Rodriguez', 5, 'Cipolletti', 'masculino'),
+('dni', '25780006', 'Marcos', 'Cruce', 4, 'Cinco Saltos', 'masculino'),
+('dni', '28567123', 'Pedro', 'Guerra', 4, 'Neuquen', 'masculino'),
+('dni', '28777098', 'Diana', 'Chavez', 2, 'Plottier', 'femenino'),
+('dni', '28975666', 'Ricardo', 'Armador', 9, 'Plottier', 'masculino'),
+('dni', '29467888', 'Lucas', 'Nino', 1, 'Cinco Saltos', 'masculino'),
+('dni', '29547291', 'Ramon', 'Perez', 6, 'Allen', 'masculino'),
+('dni', '33570568', 'Renato', 'Perez', 3, 'Cipolletti', 'masculino'),
+('dni', '35421801', 'Mariana', 'Martinez', 3, 'Cipolletti', 'femenino'),
+('dni', '36548747', 'Sergio', 'Puerta', 1, 'Allen', 'masculino'),
+('dni', '37531648', 'Santiago', 'Valdez', 0, 'Allen', 'masculino'),
+('li', '02345000', 'Luis', 'Lopez', 3, 'Cipolletti', 'masculino'),
+('li', '15876209', 'Jonhatan', 'Rambert', 6, 'Plottier', 'masculino'),
+('li', '23456712', 'Mariana', 'Farah', 4, 'General Roca', 'femenino'),
+('li', '38876543', 'Zoe', 'Gonzalez', 6, 'Allen', 'femenino'),
+('li', '58753218', 'Mariano', 'Gomez', 10, 'Allen', 'masculino');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `incendio`
+--
+
+CREATE TABLE IF NOT EXISTS `incendio` (
+  `idaccidente` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idaccidente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+
+--
+-- Dumping data for table `incendio`
+--
+
+INSERT INTO `incendio` (`idaccidente`, `tipo`) VALUES
+(4, 'intencional'),
+(6, 'espontaneo'),
+(10, 'catastrofe'),
+(11, 'accidental'),
+(15, 'intencional'),
+(20, 'intencional'),
+(21, 'catastrofe'),
+(24, 'espontaneo'),
+(26, 'intencional'),
+(32, 'espontaneo'),
+(33, 'catastrofe'),
+(37, 'accidental'),
+(38, 'accidental'),
+(40, 'espontaneo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telefono`
+--
+
+CREATE TABLE IF NOT EXISTS `telefono` (
+  `tipodoc` varchar(3) NOT NULL DEFAULT '',
+  `nrodoc` varchar(9) NOT NULL DEFAULT '',
+  `nrotelefono` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`tipodoc`,`nrodoc`,`nrotelefono`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `telefono`
+--
+
+INSERT INTO `telefono` (`tipodoc`, `nrodoc`, `nrotelefono`) VALUES
+('ce', '05256238', '15454451'),
+('ce', '05256238', '44151515'),
+('ce', '05256238', '9871245862'),
+('ce', '09333765', '4848415215'),
+('ce', '12223098', '584815154'),
+('ce', '30129303', '2154821441'),
+('dni', '05334534', '2518516232'),
+('dni', '12345098', '299887411'),
+('dni', '13409257', '874541121'),
+('dni', '15334567', '87842121565'),
+('dni', '18897234', '117548221'),
+('dni', '21123233', '1215845121'),
+('dni', '22248765', '298521488'),
+('dni', '23456123', '151515123'),
+('dni', '23456123', '2365749784'),
+('dni', '23456123', '254185894'),
+('dni', '23456123', '58745454'),
+('dni', '23456123', '98412121'),
+('dni', '23456123', '984126654'),
+('dni', '23667780', '1154875615'),
+('dni', '25344207', '294877455'),
+('dni', '25612333', '12154515'),
+('dni', '25780006', '1254821747'),
+('dni', '28567123', '299558741'),
+('dni', '28567123', '4515215'),
+('dni', '28567123', '87142151'),
+('dni', '28777098', '15185815'),
+('dni', '29467888', '564155881'),
+('li', '02345000', '2564114115'),
+('li', '02345000', '299445574'),
+('li', '02345000', '85145211'),
+('li', '02345000', '874542114'),
+('li', '15876209', '294878778'),
+('li', '23456712', '454515151'),
+('li', '38876543', '15487512');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transito`
+--
+
+CREATE TABLE IF NOT EXISTS `transito` (
+  `idaccidente` int(11) NOT NULL AUTO_INCREMENT,
+  `motivo` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`idaccidente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+
+--
+-- Dumping data for table `transito`
+--
+
+INSERT INTO `transito` (`idaccidente`, `motivo`) VALUES
+(1, 'Exceso de velocidad'),
+(3, 'Ebriedad del conductor'),
+(5, 'Imprudencia del conductor'),
+(8, 'Imprudencia del peaton'),
+(9, 'Falla mecanica'),
+(12, 'Exceso de velocidad'),
+(13, 'Imprudencia del peaton'),
+(18, 'Imprudencia del conductor'),
+(19, 'Exceso de velocidad'),
+(22, 'Falla mecanica'),
+(23, 'Exceso de velocidad'),
+(27, 'Imprudencia del conductor'),
+(30, 'Falla mecanica'),
+(31, 'Exceso de velocidad'),
+(35, 'Imprudencia del conductor'),
+(36, 'Imprudencia del peaton'),
+(39, 'Ebriedad del conductor'),
+(41, 'Ebriedad del conductor'),
+(42, 'Ebriedad del conductor'),
+(43, 'Ebriedad del conductor');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehiculo`
+--
+
+CREATE TABLE IF NOT EXISTS `vehiculo` (
+  `modelo` varchar(30) NOT NULL DEFAULT '',
+  `anio` int(11) NOT NULL DEFAULT '0',
+  `cantidadpasajeros` int(11) DEFAULT NULL,
+  `idaccidentetransito` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`modelo`,`anio`,`idaccidentetransito`),
+  KEY `idaccidentetransito` (`idaccidentetransito`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vehiculo`
+--
+
+INSERT INTO `vehiculo` (`modelo`, `anio`, `cantidadpasajeros`, `idaccidentetransito`) VALUES
+('Audi Q7', 2012, 3, 35),
+('Citroen C3', 2001, 1, 39),
+('Citroen C3', 2007, 3, 43),
+('Citroen C3', 2009, 3, 42),
+('Citroen C3', 2010, 6, 22),
+('Citroen C3', 2011, 3, 12),
+('Citroen C3', 2014, 2, 31),
+('Citroen C4', 2005, 1, 36),
+('Citroen C4', 2008, 2, 23),
+('Corsa Classic', 1999, 5, 3),
+('Corsa Classic', 2000, 3, 1),
+('Fiat 147', 2000, 2, 3),
+('Ford EcoSport', 2008, 3, 19),
+('Ford Fiesta', 1997, 1, 12),
+('Ford Fiesta', 2002, 1, 31),
+('Ford Fiesta', 2012, 2, 42),
+('Ford Focus', 2012, 5, 13),
+('Ford Ka', 1997, 3, 9),
+('Ford Mondeo', 2006, 4, 22),
+('Ford Mondeo', 2011, 4, 30),
+('Jeep Cherokee', 2010, 5, 18),
+('Mitsubishi Montero', 2013, 4, 12),
+('Peugeot 207 Compact', 2000, 2, 42),
+('Peugeot 207 Compact', 2004, 4, 9),
+('Peugeot 207 Compact', 2010, 5, 39),
+('Peugeot 207 Compact', 2010, 1, 41),
+('Peugeot 207 Compact', 2012, 2, 22),
+('Peugeot Partner', 2004, 2, 31),
+('Renault Clio', 2010, 2, 1),
+('Renault Kangoo 2', 2008, 4, 5),
+('Renault Kangoo 2', 2011, 4, 30),
+('Renault Kangoo 2', 2014, 7, 13),
+('Renault Logan', 2003, 6, 5),
+('Renault Logan', 2009, 3, 23),
+('Renault Logan', 2012, 5, 39),
+('Renault Logan', 2014, 2, 43),
+('Renault Megane', 2009, 1, 41),
+('Suzuki Fun', 1998, 1, 27),
+('Suzuki Swift', 1999, 2, 8),
+('Toyota Corolla', 2014, 1, 3),
+('Toyota Hilux', 2012, 4, 1),
+('Volkswagen Suran', 2005, 1, 23),
+('Volkswagen Suran', 2007, 1, 19),
+('Volkswagen Suran', 2007, 3, 36),
+('Volkswagen Suran', 2010, 3, 5),
+('Volkswagen Vento', 2013, 4, 23),
+('Volvo XC60', 2010, 2, 36);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `asiste`
+--
+ALTER TABLE `asiste`
+  ADD CONSTRAINT `asiste_ibfk_1` FOREIGN KEY (`tipodoc`, `nrodoc`) REFERENCES `bombero` (`tipodoc`, `nrodoc`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asiste_ibfk_2` FOREIGN KEY (`idaccidente`) REFERENCES `accidente` (`idaccidente`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `incendio`
+--
+ALTER TABLE `incendio`
+  ADD CONSTRAINT `incendio_ibfk_1` FOREIGN KEY (`idaccidente`) REFERENCES `accidente` (`idaccidente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `telefono`
+--
+ALTER TABLE `telefono`
+  ADD CONSTRAINT `telefono_ibfk_1` FOREIGN KEY (`tipodoc`, `nrodoc`) REFERENCES `bombero` (`tipodoc`, `nrodoc`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transito`
+--
+ALTER TABLE `transito`
+  ADD CONSTRAINT `transito_ibfk_1` FOREIGN KEY (`idaccidente`) REFERENCES `accidente` (`idaccidente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `vehiculo`
+--
+ALTER TABLE `vehiculo`
+  ADD CONSTRAINT `vehiculo_ibfk_1` FOREIGN KEY (`idaccidentetransito`) REFERENCES `transito` (`idaccidente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
